@@ -40,25 +40,28 @@ public class MainActivity extends AppCompatActivity {
         landmarkArrayList.add(coliseum);
         landmarkArrayList.add(londonBridge);
 
+
+        LandMarkAdapter landMarkAdapter = new LandMarkAdapter(landmarkArrayList);
+        binding.recyclerView.setAdapter(landMarkAdapter);
         //Adapter
          //ListView
 
         //mapping
-        ArrayAdapter arrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1,
-                landmarkArrayList.stream().map(landmark -> landmark.name).collect(Collectors.toList())
-        );
-        binding.listView.setAdapter(arrayAdapter);
-
-        binding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                /*Toast.makeText(MainActivity.this, landmarkArrayList.get(position).name,
-                        Toast.LENGTH_LONG).show();*/
-                Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-                intent.putExtra("landmark", landmarkArrayList.get(position));
-                startActivity(intent);
-            }
-        });
+//        ArrayAdapter arrayAdapter = new ArrayAdapter<>(this,
+//                android.R.layout.simple_list_item_1,
+//                landmarkArrayList.stream().map(landmark -> landmark.name).collect(Collectors.toList())
+//        );
+//        binding.listView.setAdapter(arrayAdapter);
+//
+//        binding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+//                /*Toast.makeText(MainActivity.this, landmarkArrayList.get(position).name,
+//                        Toast.LENGTH_LONG).show();*/
+//                Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+//                intent.putExtra("landmark", landmarkArrayList.get(position));
+//                startActivity(intent);
+//            }
+//        });
     }
 }
