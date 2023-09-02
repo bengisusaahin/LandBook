@@ -3,17 +3,25 @@ package com.example.landmarkbook;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+
+import com.example.landmarkbook.databinding.ActivityDetailsBinding;
+import com.example.landmarkbook.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Landmark> landmarkArrayList;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater()); //xml ile kodu bağlama
+        View view = binding.getRoot(); //xml yerine bagladigimiz yer cikiyor
+        setContentView(view);
 
         landmarkArrayList = new ArrayList<>();
         //Data
