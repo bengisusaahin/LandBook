@@ -2,6 +2,7 @@ package com.example.landmarkbook;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -18,5 +19,13 @@ public class DetailsActivity extends AppCompatActivity {
         View view = binding.getRoot(); //xml yerine bagladigimiz yer cikiyor
         setContentView(view);
 
+        Intent intent = getIntent();
+
+        //Casting
+        Landmark selectedLandMark = (Landmark) intent.getSerializableExtra("landmark");
+
+        binding.nameText.setText(selectedLandMark.name);
+        binding.countryText.setText(selectedLandMark.country);
+        binding.imageView.setImageResource(selectedLandMark.image);
     }
 }
