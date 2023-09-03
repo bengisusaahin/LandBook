@@ -1,19 +1,14 @@
 package com.example.landmarkbook;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
-import com.example.landmarkbook.databinding.ActivityDetailsBinding;
 import com.example.landmarkbook.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
         landmarkArrayList.add(coliseum);
         landmarkArrayList.add(londonBridge);
 
-
-        LandMarkAdapter landMarkAdapter = new LandMarkAdapter(landmarkArrayList);
-        binding.recyclerView.setAdapter(landMarkAdapter);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LandmarkAdapter landmarkAdapter = new LandmarkAdapter(landmarkArrayList);
+        binding.recyclerView.setAdapter(landmarkAdapter);
         //Adapter
          //ListView
 

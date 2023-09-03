@@ -1,5 +1,6 @@
 package com.example.landmarkbook;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +12,11 @@ import com.example.landmarkbook.databinding.RecyclerRowBinding;
 
 import java.util.ArrayList;
 
-public class LandMarkAdapter extends RecyclerView.Adapter<LandMarkAdapter.LandmarkHolder> {
+public class LandmarkAdapter extends RecyclerView.Adapter<LandmarkAdapter.LandmarkHolder> {
 
     ArrayList<Landmark> landmarkArrayList;
 
-    public LandMarkAdapter(ArrayList<Landmark> landmarkArrayList){
+    public LandmarkAdapter(ArrayList<Landmark> landmarkArrayList){
         this.landmarkArrayList = landmarkArrayList;
     }
 
@@ -30,6 +31,18 @@ public class LandMarkAdapter extends RecyclerView.Adapter<LandMarkAdapter.Landma
     @Override
     public void onBindViewHolder(@NonNull LandmarkHolder holder, int position) {
         holder.binding.recyclerViewTextView.setText(landmarkArrayList.get(position).name);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.itemView.getContext(), DetailsActivity.class);
+                //intent.putExtra("landmark", landmarkArrayList.get(holder.getAdapterPosition()));
+                Singleton singleton = Singleton.getInstance();
+                singleton.setSentLandmark(landmarkArrayList.get(position));
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
+
     }
 
     @Override

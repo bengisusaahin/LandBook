@@ -22,10 +22,13 @@ public class DetailsActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         //Casting
-        Landmark selectedLandMark = (Landmark) intent.getSerializableExtra("landmark");
+        //Landmark selectedLandmark = (Landmark) intent.getSerializableExtra("landmark");
 
-        binding.nameText.setText(selectedLandMark.name);
-        binding.countryText.setText(selectedLandMark.country);
-        binding.imageView.setImageResource(selectedLandMark.image);
+        Singleton singleton = Singleton.getInstance();
+        Landmark selectedLandmark = singleton.getSentLandmark();
+        
+        binding.nameText.setText(selectedLandmark.name);
+        binding.countryText.setText(selectedLandmark.country);
+        binding.imageView.setImageResource(selectedLandmark.image);
     }
 }
